@@ -25,19 +25,14 @@ app.use('/getRoomAgenda', jsonParser, (req, res) => {
   res.status(200).send(meetingRoomAgendaDetails);
 });
 
-// 
 app.use('/startMeetingTimer', jsonParser, (req, res) => {
-  // index meetingRoomAgendaDetails for required one
-  // set the status to true
+  console.log('req.body', JSON.stringify(req.body));
+  
+  const roomName = Object.keys(req.body)[0];
+  meetingRoomAgendaDetails[roomName].meeting_started = true;
+
   res.status(200);
 });
-// 
-app.use('/checkMeetingTimerStatus', jsonParser, (req, res) => {
-  // index meetingRoomAgendaDetails for required one
-  // see if it's true/false
-  res.status(200);
-});
-// 
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}...`);
