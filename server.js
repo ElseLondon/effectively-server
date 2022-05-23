@@ -31,7 +31,7 @@ app.use('/startMeetingTimer', jsonParser, (req, res) => {
   const roomName = Object.keys(req.body)[0];
   meetingRoomAgendaDetails[roomName].meeting_started = true;
 
-  res.status(200);
+  res.status(200).send(JSON.stringify(meetingRoomAgendaDetails));
 });
 
 app.listen(PORT, () => {
